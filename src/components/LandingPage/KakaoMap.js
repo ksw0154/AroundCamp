@@ -72,22 +72,19 @@ const KakaoMap = () => {
           clickable: true,
         });
         marker.setMap(map);
-
         const iwContent =
           '<div class="wrap">' +
           '    <div class="info">' +
           '        <div class="title">' +
-          "            카카오 스페이스닷원" +
-          '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+          `            ${camp.placeName}` +
           "        </div>" +
           '        <div class="body">' +
           '            <div class="img">' +
-          '                <img src="" width="73" height="70">' +
           "           </div>" +
           '            <div class="desc">' +
-          '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
-          '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
-          '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
+          `                <div class="ellipsis">${camp.addressDoro || camp.addressJibun}</div>` +
+          `                <div class="jibun ellipsis">${camp.category}</div>` +
+          `                <div><a href=${camp.placeUrl} target="_blank" class="link">Kakao Map 홈페이지</a></div>` +
           "            </div>" +
           "        </div>" +
           "    </div>" +
@@ -104,6 +101,10 @@ const KakaoMap = () => {
 
         kakao.maps.event.addListener(marker, "mouseout", function () {
           overlay.setMap(null);
+        });
+
+        kakao.maps.event.addListener(marker, "click", function () {
+          window.open(camp.placeUrl, "_blank");
         });
       });
     }
