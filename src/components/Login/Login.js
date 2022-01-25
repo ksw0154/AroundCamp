@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import KakaoLogin from "./KakaoLogin/KakaoLogin";
 import NaverLogin from "./NaverLogin/NaverLogin";
@@ -12,6 +13,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 const LoginPage = () => {
   const [ID, setID] = useState("");
   const [Password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onIdHandler = (event) => {
     setID(event.currentTarget.value);
@@ -19,6 +21,10 @@ const LoginPage = () => {
 
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
+  };
+
+  const onPageHandler = () => {
+    navigate("/register");
   };
 
   return (
@@ -38,6 +44,7 @@ const LoginPage = () => {
 
         <LoginSubmitBtn type="submit" value="로그인" />
       </LoginBox>
+      <RegisterBtn onClick={() => onPageHandler()}>회원가입</RegisterBtn>
       <SocialLoginBox>
         <p style={{ color: "#bbb" }}>간편 로그인</p>
         <KakaoLogin />
@@ -59,7 +66,7 @@ const LoginBox = styled.form`
 const Logo = styled.img`
   min-width: 10rem;
   width: 15%;
-  padding-top: 5rem;
+  padding-top: 2rem;
 `;
 
 const LoginInputBox = styled.div`
@@ -117,4 +124,17 @@ const SocialLoginBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const RegisterBtn = styled.button`
+  min-width: 15rem;
+  width: 15%;
+  box-sizing: content-box;
+  color: green;
+  background-color: white;
+  padding: 1rem 1.5rem;
+  border: 1px solid green;
+  border-radius: 12px;
+  margin: 0.5rem;
+  cursor: pointer;
 `;
