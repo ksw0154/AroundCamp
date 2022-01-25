@@ -22,6 +22,7 @@ const Bars = styled(FontAwesomeIcon)`
 `;
 
 const Logo = styled.img`
+  cursor: pointer;
   width: 50%;
 `;
 

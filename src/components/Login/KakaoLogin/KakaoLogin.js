@@ -15,6 +15,6 @@ export default KaKaoLogin;
 
 const LoginBtn = styled.img`
   min-width: 13rem;
-  width: 10%;
+  width: 15%;
   padding: 0.5rem 0;
 `;

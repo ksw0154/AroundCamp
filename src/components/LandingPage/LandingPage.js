@@ -3,6 +3,8 @@ import styled from "styled-components";
 import "./Marker.css";
 
 import NavBar from "../Common/NavBar/NavBar";
+import HeaderButton from "../Common/MapButton/HeaderButton";
+import LoginButton from "../Common/MapButton/LoginButton";
 import Camp from "../KakaoMap/Camp";
 import Socar from "../KakaoMap/Socar";
 
@@ -41,11 +43,13 @@ const LandingPage = () => {
   return (
     <div>
       <Container>
-        <NavBar />
+        <NavBar map={kakaoMap} />
+        <HeaderButton />
+        <LoginButton />
         <MapContainer id="KakaoMap" ref={container} />
       </Container>
-      <Camp map={kakaoMap} />
-      <Socar map={kakaoMap} />
+      {/* <Camp map={kakaoMap} /> */}
+      {/* <Socar map={kakaoMap} /> */}
     </div>
   );
 };

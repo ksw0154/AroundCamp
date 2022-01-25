@@ -2,11 +2,12 @@ import styled from "styled-components";
 import NavHeader from "./NavHeader";
 import NavList from "./NavList";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  const kakaoMap = props.map;
   return (
     <NavBox>
       <NavHeader />
-      <NavList />
+      <NavList map={kakaoMap} />
     </NavBox>
   );
 };
@@ -14,8 +15,9 @@ const NavBar = () => {
 export default NavBar;
 
 const NavBox = styled.div`
+  /* display: none; */
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
-  width: 20%;
+  width: 30%;
 `;

@@ -8,9 +8,11 @@ const Camp = (props) => {
   const [campList, setCampList] = useState("");
   const kakaoMap = props.map;
 
+  console.log("here");
   const getCampList = async () => {
     try {
       const response = await axios.get(JEJU_CAMPING_URL);
+      console.log(response);
       setCampList(response.data);
     } catch (e) {
       console.log(e);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,15 +7,77 @@ import { faCarSide } from "@fortawesome/free-solid-svg-icons";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import HOUSE from "../../../images/camp.png";
+import GIFTSHOP from "../../../images/giftshop.png";
+import axios from "axios";
 
-const HeaderList = () => {
+import { JEJU_CAMPING_URL, JEJU_SOCAR_URL } from "../../Oauth/AuthInfo";
+
+const { kakao } = window;
+
+const HeaderList = ({ map }) => {
+  const kakaoMap = map;
+  const [markerList, setMarkerList] = useState();
+
+  const markers = [];
+
+  const markersHandler = async (url, name) => {
+    try {
+      if (markers) {
+        for (let i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+      }
+      const response = await axios.get(url);
+
+      response.data.name = name;
+      setMarkerList(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    if (markerList) {
+      let imageSrc;
+      let imageOption;
+      switch (markerList.name) {
+        case "JEJU_CAMPING_URL":
+          imageSrc = HOUSE;
+          // imageSrc = GIFTSHOP;
+          break;
+        case "JEJU_SOCAR_URL":
+          imageSrc = "https://www.pikpng.com/pngl/b/165-1656003_socar-png-clipart.png";
+
+          break;
+        default:
+          break;
+      }
+      let markerImage;
+      if (imageSrc) {
+        markerImage = new kakao.maps.MarkerImage(imageSrc, new kakao.maps.Size(24, 35), imageOption);
+      }
+      markerList.data.map((position) => {
+        let marker = new kakao.maps.Marker({
+          position: new kakao.maps.LatLng(position.latitude, position.longitude),
+          title: position.longitude,
+          image: markerImage ? markerImage : null,
+          clickable: true,
+        });
+
+        markers.push(marker);
+        return marker.setMap(kakaoMap);
+      });
+    }
+  });
+
   return (
     <List>
-      <Item>
+      <Item onClick={() => markersHandler(JEJU_CAMPING_URL, "JEJU_CAMPING_URL")}>
         <Icon icon={faCampground} />
         캠핑장
       </Item>
-      <Item>
+      <Item onClick={() => markersHandler(JEJU_SOCAR_URL, "JEJU_SOCAR_URL")}>
         <Icon icon={faCarSide} />
         쏘카
       </Item>
