@@ -10,14 +10,29 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import HOUSE from "../../../images/camp.png";
 import GIFTSHOP from "../../../images/giftshop.png";
 import axios from "axios";
+import Icon from "./Icon";
 
 import { JEJU_CAMPING_URL, JEJU_SOCAR_URL } from "../../Oauth/AuthInfo";
 
 const { kakao } = window;
 
+const itemList = [
+  { text: "캠핑장", icon: faCampground, url: JEJU_CAMPING_URL, focused: false },
+  { text: "쏘카", icon: faCarSide, url: JEJU_SOCAR_URL, focused: false },
+  { text: "기념품 가게", icon: faStore, url: "", focused: false },
+  { text: "즐겨 찾기", icon: faStar, url: "", focused: false },
+  { text: "좋아요", icon: faHeart, url: "", focused: false },
+];
+
 const HeaderList = ({ map }) => {
   const kakaoMap = map;
   const [markerList, setMarkerList] = useState();
+  const [categoryList, setCategoryList] = useState(itemList);
+
+  const changeCategory = (id) => {
+    setCategoryList(categoryList.map((category) => (category.focused = false)));
+    setCategoryList(categoryList.filter((category) => (category.icon.iconName === id ? (category.focused = true) : category)));
+  };
 
   const markers = [];
 
@@ -72,52 +87,27 @@ const HeaderList = ({ map }) => {
   });
 
   return (
-    <List>
-      <Item onClick={() => markersHandler(JEJU_CAMPING_URL, "JEJU_CAMPING_URL")}>
-        <Icon icon={faCampground} />
-        캠핑장
-      </Item>
-      <Item onClick={() => markersHandler(JEJU_SOCAR_URL, "JEJU_SOCAR_URL")}>
-        <Icon icon={faCarSide} />
-        쏘카
-      </Item>
-      <Item>
-        <Icon icon={faStore} />
-        기념품 가게
-      </Item>
-      <Item>
-        <Icon icon={faStar} style={{ color: "#f6e24b" }} />
-        즐겨찾기
-      </Item>
-      <Item>
-        <Icon icon={faHeart} style={{ color: "red" }} />
-        좋아요
-      </Item>
-    </List>
+    <>
+      <Title>카테고리 검색</Title>
+      <ItemBox>
+        {categoryList.map((item, index) => (
+          <Icon info={item} key={index} changeCategory={changeCategory} />
+        ))}
+      </ItemBox>
+    </>
   );
 };
 
 export default HeaderList;
 
-const List = styled.div`
+const ItemBox = styled.div`
   display: flex;
-  flex-direction: column;
+  margin-left: 20px;
 `;
 
-const Item = styled.div`
-  text-align: start;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 1rem 0;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  width: auto;
-`;
-
-const Icon = styled(FontAwesomeIcon)`
-  font-weight: normal;
-  font-size: 1.5rem;
-
-  padding-right: 0.5rem;
+const Title = styled.div`
+  font-size: 15px;
+  margin-left: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
 `;

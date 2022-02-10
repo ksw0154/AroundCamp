@@ -34,7 +34,7 @@ const LoginPage = () => {
 
         <LoginInputBox>
           <FontAwesomeIcon icon={faUser} />
-          <InputBox type="text" placeholder="아이디" value={ID} onChange={onIdHandler} />
+          <InputBox type="email" placeholder="Email" value={ID} onChange={onIdHandler} />
         </LoginInputBox>
 
         <LoginInputBox>
