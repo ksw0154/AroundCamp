@@ -7,11 +7,11 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { JEJU_CAMPING_URL, JEJU_SOCAR_URL } from "./components/Oauth/AuthInfo";
 
 const itemList = [
-  { text: "캠핑장", icon: faCampground, url: JEJU_CAMPING_URL, focused: false },
-  { text: "쏘카", icon: faCarSide, url: JEJU_SOCAR_URL, focused: false },
-  { text: "기념품 가게", icon: faStore, url: "", focused: false },
-  { text: "즐겨 찾기", icon: faStar, url: "", focused: false },
-  { text: "좋아요", icon: faHeart, url: "", focused: false },
+  { text: "캠핑장", icon: faCampground, url: JEJU_CAMPING_URL, focused: false, list: "" },
+  { text: "쏘카", icon: faCarSide, url: JEJU_SOCAR_URL, focused: false, list: "" },
+  { text: "기념품 가게", icon: faStore, url: "", focused: false, list: "" },
+  { text: "즐겨 찾기", icon: faStar, url: "", focused: false, list: "" },
+  { text: "좋아요", icon: faHeart, url: "", focused: false, list: "" },
 ];
 
 const category = createSlice({
@@ -28,6 +28,33 @@ const category = createSlice({
       });
       return state;
     },
+    getList: {
+      reducer: (state, action) => {
+        state.map((category) => {
+          if (category.icon.iconName === action.payload.id) {
+            category.list = action.payload.list;
+          }
+        });
+      },
+      prepare: (id, list) => {
+        return { payload: { id, list } };
+      },
+    },
+
+    updateStar: (state, action) => {
+      state.map((category) => {
+        if (category.text === "즐겨 찾기") {
+          if (category.list.length == 0) {
+            category.list = [action.payload];
+          } else {
+            if (category.list.find((cate) => cate.placeUrl === action.payload.placeUrl)) {
+            } else {
+              category.list.push(action.payload);
+            }
+          }
+        }
+      });
+    },
   },
 });
 
@@ -38,6 +65,6 @@ const category = createSlice({
 
 const store = configureStore({ reducer: category.reducer });
 
-export const { handleFocus } = category.actions;
+export const { handleFocus, getList, updateStar } = category.actions;
 
 export default store;
