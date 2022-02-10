@@ -5,8 +5,6 @@ import "./Marker.css";
 import NavBar from "../Common/NavBar/NavBar";
 import HeaderButton from "../Common/MapButton/HeaderButton";
 import LoginButton from "../Common/MapButton/LoginButton";
-import Camp from "../KakaoMap/Camp";
-import Socar from "../KakaoMap/Socar";
 
 const { kakao } = window;
 
