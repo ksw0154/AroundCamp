@@ -13,7 +13,7 @@ const Map = ({ pinList }) => {
     const center = new kakao.maps.LatLng(33.36256187769044, 126.52903781775196);
     const options = {
       center,
-      level: 9,
+      level: 8,
     };
     const map = new kakao.maps.Map(container.current, options);
     setKakaoMap(map);
@@ -28,11 +28,30 @@ const Map = ({ pinList }) => {
         image: null,
         clickable: true,
       });
+      let infowindow = new kakao.maps.InfoWindow({
+        content: position.placeName,
+      });
+
+      kakao.maps.event.addListener(marker, "mouseover", makeOverListener(kakaoMap, marker, infowindow));
+      kakao.maps.event.addListener(marker, "mouseout", makeOutListener(infowindow));
 
       tmp.push(marker);
     });
     setMarkers(tmp);
   };
+
+  function makeOverListener(map, marker, infowindow) {
+    return function () {
+      infowindow.open(map, marker);
+    };
+  }
+
+  // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+  function makeOutListener(infowindow) {
+    return function () {
+      infowindow.close();
+    };
+  }
 
   const hideMarkers = () => {
     markers.forEach((marker) => {
