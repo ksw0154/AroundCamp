@@ -4,7 +4,6 @@ import CategoryIcon from "./CategoryIcon";
 import { connect } from "react-redux";
 
 const CategoryBox = ({ categorys }) => {
-  console.log(categorys);
   return (
     <>
       <ItemBox>

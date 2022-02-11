@@ -44,12 +44,12 @@ const category = createSlice({
     updateStar: (state, action) => {
       state.map((category) => {
         if (category.text === "즐겨 찾기") {
-          if (category.list.length == 0) {
+          if (!Array.isArray(category.list)) {
             category.list = [action.payload];
           } else {
             if (category.list.find((cate) => cate.placeUrl === action.payload.placeUrl)) {
             } else {
-              category.list.push(action.payload);
+              category.list.unshift(action.payload);
             }
           }
         }

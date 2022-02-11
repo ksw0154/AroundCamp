@@ -26,26 +26,6 @@ const SearchResultList = ({ categoryInfo, getList }) => {
     }
   }, [categoryInfo]);
 
-  // const kakaoMap = map;
-  // const [markerList, setMarkerList] = useState();
-  // const markers = [];
-
-  // const markersHandler = async (url, name) => {
-  //   try {
-  //     if (markers) {
-  //       for (let i = 0; i < markers.length; i++) {
-  //         markers[i].setMap(null);
-  //       }
-  //     }
-  //     const response = await axios.get(url);
-
-  //     response.data.name = name;
-  //     setMarkerList(response.data);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
   // useEffect(() => {
   //   if (markerList) {
   //     let imageSrc;
@@ -97,6 +77,7 @@ const SearchResultList = ({ categoryInfo, getList }) => {
 };
 
 const mapStateToProps = (state) => {
+  // console.log(state.find((category) => category.focused === true));
   return { categoryInfo: state.find((category) => category.focused === true) };
 };
 
