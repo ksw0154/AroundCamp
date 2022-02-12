@@ -26,39 +26,6 @@ const SearchResultList = ({ categoryInfo, getList }) => {
     }
   }, [categoryInfo]);
 
-  // useEffect(() => {
-  //   if (markerList) {
-  //     let imageSrc;
-  //     let imageOption;
-  //     switch (markerList.name) {
-  //       case "JEJU_CAMPING_URL":
-  //         imageSrc = HOUSE;
-  //         // imageSrc = GIFTSHOP;
-  //         break;
-  //       case "JEJU_SOCAR_URL":
-  //         imageSrc = "https://www.pikpng.com/pngl/b/165-1656003_socar-png-clipart.png";
-
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //     let markerImage;
-  //     if (imageSrc) {
-  //       markerImage = new kakao.maps.MarkerImage(imageSrc, new kakao.maps.Size(24, 35), imageOption);
-  //     }
-  //     markerList.data.map((position) => {
-  //       let marker = new kakao.maps.Marker({
-  //         position: new kakao.maps.LatLng(position.latitude, position.longitude),
-  //         title: position.longitude,
-  //         image: markerImage ? markerImage : null,
-  //         clickable: true,
-  //       });
-
-  //       markers.push(marker);
-  //       return marker.setMap(kakaoMap);
-  //     });
-  //   }
-  // });
   if (loading) {
     return null;
   }
@@ -77,7 +44,6 @@ const SearchResultList = ({ categoryInfo, getList }) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state.find((category) => category.focused === true));
   return { categoryInfo: state.find((category) => category.focused === true) };
 };
 
