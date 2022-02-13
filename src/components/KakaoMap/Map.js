@@ -86,7 +86,7 @@ const Map = ({ pinList }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { pinList: state.find((category) => category.focused === true && Array.isArray(category.list)) };
+  return { pinList: state.category.find((category) => category.focused === true && Array.isArray(category.list)) };
 };
 
 export default connect(mapStateToProps)(Map);

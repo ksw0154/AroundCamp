@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { handleFocus } from "../../../store";
+import { handleFocus } from "../../../_reducers/category";
 
-const CategoryIcon = ({ categoryInfo, changeFocus }) => {
+const CategoryIcon = ({ categoryInfo, userInfo, changeFocus }) => {
   const onClick = () => {
     changeFocus(categoryInfo.icon.iconName);
   };
@@ -17,7 +17,10 @@ const CategoryIcon = ({ categoryInfo, changeFocus }) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return { categoryInfo: state.find((category) => category.icon.iconName === ownProps.id) };
+  return {
+    categoryInfo: state.category.find((category) => category.icon.iconName === ownProps.id),
+    userInfo: state.user,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

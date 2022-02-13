@@ -1,10 +1,10 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { faCampground } from "@fortawesome/free-solid-svg-icons";
 import { faCarSide } from "@fortawesome/free-solid-svg-icons";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { JEJU_CAMPING_URL, JEJU_SOCAR_URL, JEJU_STORE_URL } from "./components/Oauth/AuthInfo";
+import { JEJU_CAMPING_URL, JEJU_SOCAR_URL, JEJU_STORE_URL } from "../components/Oauth/AuthInfo";
 
 const itemList = [
   { text: "캠핑장", icon: faCampground, url: JEJU_CAMPING_URL, focused: false, list: "" },
@@ -58,13 +58,6 @@ const category = createSlice({
   },
 });
 
-// const users = createSlice({
-//   name: "usersReducer",
-//   initialState: [{ id: "test", age: 23, nickname: "ABEL" }],
-// });
-
-const store = configureStore({ reducer: category.reducer });
-
 export const { handleFocus, getList, updateStar } = category.actions;
 
-export default store;
+export default category;

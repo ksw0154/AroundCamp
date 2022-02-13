@@ -16,7 +16,7 @@ const CategoryBox = ({ categorys }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { categorys: state };
+  return { categorys: state.category };
 };
 
 export default connect(mapStateToProps)(CategoryBox);

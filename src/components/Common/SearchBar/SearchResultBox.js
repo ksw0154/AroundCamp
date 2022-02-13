@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { updateStar } from "../../../store";
+import { updateStar } from "../../../_reducers/category";
 
 const SearchResultBox = ({ searchResult, updateStar }) => {
   const onClickStar = () => {

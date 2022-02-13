@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getList } from "../../../store";
+import { getList } from "../../../_reducers/category";
 import SearchResultBox from "./SearchResultBox";
 import styled from "styled-components";
-
-// import HOUSE from "../../../images/camp.png";
-// import GIFTSHOP from "../../../images/giftshop.png";
-// const { kakao } = window;
 
 const SearchResultList = ({ categoryInfo, getList }) => {
   const [loading, setLoading] = useState(true);
@@ -44,7 +40,7 @@ const SearchResultList = ({ categoryInfo, getList }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { categoryInfo: state.find((category) => category.focused === true) };
+  return { categoryInfo: state.category.find((category) => category.focused === true) };
 };
 
 const mapDispatchToProps = (dispatch) => {
