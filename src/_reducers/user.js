@@ -5,12 +5,19 @@ const init_info = {
   nickName: "Abel",
   age: 23,
   email: "sangs8448@gmail.com",
+  favorites: [],
 };
 
 const user = createSlice({
   name: "userReducer",
   initialState: init_info,
-  reducers: {},
+  reducers: {
+    insertFavorite: (state, action) => {
+      state.favorites.push(action.payload);
+    },
+  },
 });
+
+export const { insertFavorite } = user.actions;
 
 export default user;

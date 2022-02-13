@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { updateStar } from "../../../_reducers/category";
+import { insertFavorite } from "../../../_reducers/user";
 
-const SearchResultBox = ({ searchResult, updateStar }) => {
-  const onClickStar = () => {
-    updateStar(searchResult);
+const SearchResultBox = ({ searchResult, insertFavorite }) => {
+  const updateFavorites = () => {
+    insertFavorite(searchResult);
   };
 
   return (
@@ -16,7 +16,7 @@ const SearchResultBox = ({ searchResult, updateStar }) => {
       <Header>
         <Title>{searchResult.placeName}</Title>
         <Icons>
-          <Icon className="star" onClick={onClickStar}>
+          <Icon className="star" onClick={updateFavorites}>
             <FontAwesomeIcon style={{ color: "#f5a002" }} icon={faStar} />
           </Icon>
           <Icon>
@@ -40,7 +40,7 @@ const SearchResultBox = ({ searchResult, updateStar }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateStar: (result) => dispatch(updateStar(result)),
+    insertFavorite: (placeInfo) => dispatch(insertFavorite(placeInfo)),
   };
 };
 
