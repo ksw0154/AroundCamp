@@ -26,7 +26,6 @@ const LandingPage = ({ userInfo, getUserInfo }) => {
   };
 
   useEffect(() => {
-    console.log(storageInfo);
     if (storageInfo) {
       getUserInfo(storageInfo);
       setIsLogin(true);
