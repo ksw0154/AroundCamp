@@ -3,7 +3,6 @@ import { faCampground } from "@fortawesome/free-solid-svg-icons";
 import { faCarSide } from "@fortawesome/free-solid-svg-icons";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { JEJU_CAMPING_URL, JEJU_SOCAR_URL, JEJU_STORE_URL } from "../components/Oauth/AuthInfo";
 
 const itemList = [
@@ -11,7 +10,6 @@ const itemList = [
   { text: "쏘카", icon: faCarSide, url: JEJU_SOCAR_URL, focused: false, list: "" },
   { text: "기념품 가게", icon: faStore, url: JEJU_STORE_URL, focused: false, list: "" },
   { text: "즐겨 찾기", icon: faStar, url: "", focused: false, list: "" },
-  { text: "좋아요", icon: faHeart, url: "", focused: false, list: "" },
 ];
 
 const category = createSlice({
