@@ -15,10 +15,9 @@ const SearchResultList = ({ categoryInfo, getList }) => {
   };
 
   useEffect(() => {
-    if (categoryInfo && categoryInfo.list === "") {
+    if (categoryInfo && categoryInfo.list === "" && categoryInfo.url) {
       setLoading(true);
       getResult(categoryInfo.url);
-    } else {
     }
   }, [categoryInfo]);
 
@@ -26,25 +25,19 @@ const SearchResultList = ({ categoryInfo, getList }) => {
     return null;
   }
 
-  if (!categoryInfo.list) {
-    return null;
-  }
-
-  return (
-    <ResultList>
-      {categoryInfo.list.map((searchResult, index) => (
-        <SearchResultBox key={index} searchResult={searchResult} />
-      ))}
-    </ResultList>
-  );
+  return <ResultList>{categoryInfo.list ? categoryInfo.list.map((searchResult, index) => <SearchResultBox key={index} searchResult={searchResult} />) : null}</ResultList>;
 };
 
 const mapStateToProps = (state) => {
-  return { categoryInfo: state.category.find((category) => category.focused === true) };
+  return {
+    categoryInfo: state.category.find((category) => category.focused === true),
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { getList: (id, list) => dispatch(getList(id, list)) };
+  return {
+    getList: (id, list) => dispatch(getList(id, list)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResultList);

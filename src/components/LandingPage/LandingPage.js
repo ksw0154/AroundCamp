@@ -11,14 +11,14 @@ import { getUserInfo } from "../../_reducers/user";
 
 const LandingPage = ({ userInfo, getUserInfo }) => {
   const [isLogin, setIsLogin] = useState(false);
-  const [storageInfo, setStorageInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
+  const [kakaoInfo, setStorageInfo] = useState(JSON.parse(localStorage.getItem("kakaoInfo")));
 
-  const getProflie = async () => {
+  const getKakaoProfile = async () => {
     try {
       let data = await window.Kakao.API.request({
         url: "/v2/user/me",
       });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("kakaoInfo", JSON.stringify(data));
       getUserInfo(data);
     } catch (err) {
       console.log(err);
@@ -26,11 +26,11 @@ const LandingPage = ({ userInfo, getUserInfo }) => {
   };
 
   useEffect(() => {
-    if (storageInfo) {
-      getUserInfo(storageInfo);
+    if (kakaoInfo) {
+      getUserInfo(kakaoInfo);
       setIsLogin(true);
     } else if (localStorage.length !== 0) {
-      getProflie();
+      getKakaoProfile();
       setIsLogin(true);
     }
   }, []);
@@ -42,7 +42,7 @@ const LandingPage = ({ userInfo, getUserInfo }) => {
         <HeaderButton />
         {isLogin ? (
           <>
-            <ProfileImage image={userInfo.kakaoInfo.thumbnail} />
+            <ProfileImage />
             <LogOutButton />
           </>
         ) : (
@@ -54,19 +54,13 @@ const LandingPage = ({ userInfo, getUserInfo }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    userInfo: state.user,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUserInfo: (id) => dispatch(getUserInfo(id)),
+    getUserInfo: (data) => dispatch(getUserInfo(data)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+export default connect(null, mapDispatchToProps)(LandingPage);
 
 const Container = styled.div`
   display: flex;

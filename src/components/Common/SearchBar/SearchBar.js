@@ -2,9 +2,10 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import CategoryBox from "./CategoryBox";
 import SearchResultList from "./SearchResultList";
+import FavoriteList from "./FavoriteList";
+import { connect } from "react-redux";
 
-const NavBar = (props) => {
-  const kakaoMap = props.map;
+const NavBar = ({ categoryInfo }) => {
   return (
     <NavBox>
       <Logo />
@@ -12,12 +13,18 @@ const NavBar = (props) => {
       <CategoryBox />
 
       <Title>검색 결과</Title>
-      <SearchResultList />
+      {categoryInfo && categoryInfo.icon.iconName === "star" ? <FavoriteList /> : <SearchResultList />}
     </NavBox>
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    categoryInfo: state.category.find((category) => category.focused === true),
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);
 
 const NavBox = styled.div`
   min-width: 390px;

@@ -1,22 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const init_info = {
-  kakaoInfo: {},
-  favorites: [],
-};
-
 const user = createSlice({
   name: "userReducer",
-  initialState: init_info,
+  initialState: {},
   reducers: {
     getUserInfo: (state, action) => {
-      if (action.payload) {
-        state.kakaoInfo.id = action.payload.id;
-        state.kakaoInfo.email = action.payload.kakao_account.email;
-        state.kakaoInfo.nickName = action.payload.kakao_account.profile.nickname;
-        state.kakaoInfo.thumbnail = action.payload.kakao_account.profile.thumbnail_image_url;
-        state.favorites = action.payload.favorites;
-      }
+      state.kakao = action.payload;
     },
     insertFavorite: (state, action) => {
       if (state.favorites === undefined) {
@@ -26,12 +15,16 @@ const user = createSlice({
       if (state.favorites.find((favorite) => favorite.placeUrl === action.payload.placeUrl)) {
       } else {
         state.favorites.unshift(action.payload);
-        localStorage.setItem("userInfo", JSON.stringify(state));
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
       }
+    },
+    getFavorites: (state, action) => {
+      state.favorites = JSON.parse(localStorage.getItem("favorites"));
+      state.favorites.list = state.favorites;
     },
   },
 });
 
-export const { getUserInfo, insertFavorite } = user.actions;
+export const { getUserInfo, insertFavorite, getFavorites } = user.actions;
 
 export default user;

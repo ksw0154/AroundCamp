@@ -2,21 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { insertFavorite } from "../../../_reducers/user";
 
-const SearchResultBox = ({ searchResult, insertFavorite }) => {
-  const updateFavorites = () => {
-    insertFavorite(searchResult);
-  };
-
+const FavoriteBox = ({ searchResult }) => {
   return (
     <ResultBox>
       <Header>
         <Title>{searchResult.placeName}</Title>
         <Icons>
-          <Icon className="star" onClick={updateFavorites}>
+          <Icon className="star">
             <FontAwesomeIcon style={{ color: "#f5a002" }} icon={faStar} />
           </Icon>
         </Icons>
@@ -35,13 +29,7 @@ const SearchResultBox = ({ searchResult, insertFavorite }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    insertFavorite: (placeInfo) => dispatch(insertFavorite(placeInfo)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(SearchResultBox);
+export default connect(null, null)(FavoriteBox);
 
 const ResultBox = styled.div`
   padding: 20px 20px;
