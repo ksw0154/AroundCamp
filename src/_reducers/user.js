@@ -26,6 +26,7 @@ const user = createSlice({
       if (state.favorites.find((favorite) => favorite.placeUrl === action.payload.placeUrl)) {
       } else {
         state.favorites.unshift(action.payload);
+        localStorage.setItem("userInfo", JSON.stringify(state));
       }
     },
   },
