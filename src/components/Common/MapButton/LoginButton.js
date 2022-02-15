@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const handlePage = () => {
+  const login = () => {
     navigate("/login");
   };
 
-  return <LoginButton onClick={handlePage}>로그인</LoginButton>;
+  return <LoginButton onClick={login}>로그인</LoginButton>;
 };
 
 export default Login;
