@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
-const ProfileImage = ({ image }) => {
-  return <Profile src={image} />;
+const ProfileImage = ({ userInfo }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (userInfo) {
+      setIsLoading(false);
+    }
+  }, [userInfo]);
+
+  if (isLoading) {
+    return null;
+  }
+  return <Profile src={userInfo.properties && userInfo.properties.thumbnail_image} />;
 };
 
-export default ProfileImage;
+const mapStateToProps = (state) => {
+  if (state) {
+    return {
+      userInfo: state.user.kakao,
+    };
+  }
+};
+
+export default connect(mapStateToProps)(ProfileImage);
 
 const Profile = styled.img`
   position: absolute;
