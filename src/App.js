@@ -3,6 +3,7 @@ import Register from "./components/Register/Register";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import KakaoAuth from "./components/Login/KakaoLogin/KakaoAuth";
+import "./App.css";
 
 function App() {
   return (
