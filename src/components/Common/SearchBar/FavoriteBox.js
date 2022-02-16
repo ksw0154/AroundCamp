@@ -1,17 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faMinusSquare } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
+import { deleteFavorite } from "../../../_reducers/user";
 
-const FavoriteBox = ({ searchResult }) => {
+const FavoriteBox = ({ searchResult, deleteFavorite }) => {
+  const updateFavorites = () => {
+    deleteFavorite(searchResult);
+  };
+
   return (
     <ResultBox>
       <Header>
         <Title>{searchResult.placeName}</Title>
         <Icons>
-          <Icon className="star">
-            <FontAwesomeIcon style={{ color: "#f5a002" }} icon={faStar} />
+          <Icon onClick={updateFavorites}>
+            <FontAwesomeIcon style={{ color: "#f5a002" }} icon={faMinusSquare} />
           </Icon>
         </Icons>
       </Header>
@@ -29,7 +34,13 @@ const FavoriteBox = ({ searchResult }) => {
   );
 };
 
-export default connect(null, null)(FavoriteBox);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteFavorite: (favorite) => dispatch(deleteFavorite(favorite)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(FavoriteBox);
 
 const ResultBox = styled.div`
   padding: 20px 20px;
@@ -48,8 +59,9 @@ const Icons = styled.div`
 const Icon = styled.div`
   padding: 3px;
   margin: 0 3px;
-  border: 1px solid lightgray;
-  font-size: 15px;
+  color: gray;
+  /* border: 1px solid lightgray; */
+  font-size: 20px;
   border-radius: 4px;
   cursor: pointer;
 `;
@@ -77,4 +89,8 @@ const Category = styled.div`
 const PlaceUrl = styled.a`
   font-size: 12px;
   margin-left: 8px;
+  :link,
+  :visited {
+    color: #f5a002;
+  }
 `;
