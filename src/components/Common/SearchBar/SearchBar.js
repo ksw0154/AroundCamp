@@ -30,6 +30,7 @@ const NavBox = styled.div`
   min-width: 390px;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 `;
 
 const Title = styled.div`

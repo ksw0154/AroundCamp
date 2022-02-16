@@ -18,6 +18,8 @@ const SearchResultList = ({ categoryInfo, getList }) => {
     if (categoryInfo && categoryInfo.list === "" && categoryInfo.url) {
       setLoading(true);
       getResult(categoryInfo.url);
+    } else if (categoryInfo && categoryInfo.list) {
+      setLoading(false);
     }
   }, [categoryInfo]);
 
@@ -44,4 +46,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(SearchResultList);
 
 const ResultList = styled.div`
   margin-top: 10px;
+  overflow-y: auto;
+  height: 100%;
 `;

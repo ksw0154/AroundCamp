@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { insertFavorite } from "../../../_reducers/user";
 
@@ -89,4 +88,8 @@ const Category = styled.div`
 const PlaceUrl = styled.a`
   font-size: 12px;
   margin-left: 8px;
+  :link,
+  :visited {
+    color: #f5a002;
+  }
 `;

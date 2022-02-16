@@ -14,20 +14,16 @@ export default Login;
 
 const LoginButton = styled.div`
   position: absolute;
-  font-size: small;
+  font-size: 12px;
   top: 15px;
   right: 15px;
   z-index: 999;
   width: auto;
   margin: 0;
   padding: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border: 1px solid white;
+  color: white;
+  background-color: #f5a002;
+  border: 1px solid #f5a002;
   border-radius: 15px;
-  background-color: white;
-
   cursor: pointer;
 `;

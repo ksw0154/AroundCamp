@@ -10,7 +10,7 @@ const CategoryIcon = ({ categoryInfo, userInfo, changeFocus }) => {
   };
   return (
     <Button onClick={onClick} isfocus={categoryInfo.focused}>
-      <Img icon={categoryInfo.icon} />
+      <Img icon={categoryInfo.icon} isfocus={categoryInfo.focused} />
       <Text>{categoryInfo.text}</Text>
     </Button>
   );
@@ -34,7 +34,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(CategoryIcon);
 const Button = styled.button`
   width: 65px;
   height: 60px;
-  background-color: ${(props) => (props.isfocus ? "pink" : "white")};
+  background-color: ${(props) => (props.isfocus ? "#f5a002" : "white")};
+  color: ${(props) => (props.isfocus ? "white" : "black")};
   border-radius: 15px;
   border: none;
   cursor: pointer;
@@ -43,7 +44,7 @@ const Button = styled.button`
 
 const Img = styled(FontAwesomeIcon)`
   font-size: 20px;
-  color: black;
+  color: ${(props) => (props.isfocus ? "white" : "black")};
   pointer-events: none;
 `;
 
