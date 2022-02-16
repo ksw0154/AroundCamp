@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import KakaoLogin from "./KakaoLogin/KakaoLogin";
-import NaverLogin from "./NaverLogin/NaverLogin";
 import logo from "../../images/logo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,7 +31,7 @@ const LoginPage = () => {
       <LoginBox>
         <Logo src={logo} />
 
-        <LoginInputBox>
+        {/* <LoginInputBox>
           <FontAwesomeIcon icon={faUser} />
           <InputBox type="email" placeholder="Email" value={ID} onChange={onIdHandler} />
         </LoginInputBox>
@@ -43,12 +42,11 @@ const LoginPage = () => {
         </LoginInputBox>
 
         <LoginSubmitBtn type="submit" value="로그인" />
+        <RegisterBtn onClick={() => onPageHandler()}>회원가입</RegisterBtn> */}
       </LoginBox>
-      <RegisterBtn onClick={() => onPageHandler()}>회원가입</RegisterBtn>
       <SocialLoginBox>
         <p style={{ color: "#bbb" }}>간편 로그인</p>
         <KakaoLogin />
-        <NaverLogin />
       </SocialLoginBox>
     </>
   );
@@ -124,6 +122,7 @@ const SocialLoginBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 const RegisterBtn = styled.button`
