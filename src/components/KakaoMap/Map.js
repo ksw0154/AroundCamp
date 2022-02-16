@@ -5,7 +5,7 @@ import "./Marker.css";
 
 const { kakao } = window;
 
-const Map = ({ pinList }) => {
+const Map = ({ pinList, favorites }) => {
   const [kakaoMap, setKakaoMap] = useState(null);
   const [markers, setMarkers] = useState([]);
   const container = useRef(null);
@@ -21,7 +21,10 @@ const Map = ({ pinList }) => {
 
   const getMarkers = () => {
     let tmp = [];
-    pinList.list.map((position) => {
+
+    const locationList = pinList ? pinList : favorites.list;
+
+    locationList.list.map((position) => {
       let marker = new kakao.maps.Marker({
         position: new kakao.maps.LatLng(position.latitude, position.longitude),
         title: position.longitude,
@@ -77,6 +80,13 @@ const Map = ({ pinList }) => {
   }, [pinList]);
 
   useEffect(() => {
+    if (favorites) {
+      hideMarkers();
+      getMarkers();
+    }
+  }, [favorites]);
+
+  useEffect(() => {
     if (markers.length !== 0) {
       showMarkers();
     }
@@ -86,7 +96,10 @@ const Map = ({ pinList }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { pinList: state.category.find((category) => category.focused === true && Array.isArray(category.list)) || state.user.favorites };
+  return {
+    pinList: state.category.find((category) => category.focused === true && Array.isArray(category.list)),
+    favorites: state.user.favorites,
+  };
 };
 
 export default connect(mapStateToProps)(Map);
