@@ -1,19 +1,102 @@
-# Good Place
+# 제주여지도 ⛺️
 
-무언가 좋은 곳을 찾기 위한 어플리케이션
+## Index
 
-카카오 로그인 API
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [Authors](#authors)
+- [License](#license)
 
-카카오 맵 API
-navigator.geologication API 사용
+## About
 
-> 카카오 맵과 같은 외부 라이브러리를 사용할 때는 특정 DOM에다가 적용하기 때문에 DOM을 선택해야 하는 상황이 발생할 수 있다.
-> 이럴때는 useRef()를 사용한다.
+This project provides information necessary for camping sites and campin g in Jeju Island.  
+This infomation is provided using Jeju Data Hub API and Kakao Map API.
 
-const container = useRef(null);
-const container = document.getElementById("KakaoMap");
+---
 
-네이버 로그인 API
-구글 로그인 API
+## Overview
 
-FontAwesome 라이브러리 사용
+**If you use this project, you can use this function**
+
+<img width="1920" alt="overview" src="https://user-images.githubusercontent.com/44170696/154398219-9b5b0f86-f8c1-4a1d-b64a-719bade125d5.png">
+
+### Bookmark Place
+
+<img width="1920" alt="bookmarks" src="https://user-images.githubusercontent.com/44170696/154398292-ab6cd19b-b620-407e-ba26-4f5a69a5f104.png">
+
+### Social Login
+
+<img width="600" alt="socialLogin" src="https://user-images.githubusercontent.com/44170696/154398350-910ae8ab-f766-46f7-b084-fb3af5f4b2f5.png">
+
+### Remeber-me
+
+---
+
+## Getting Started
+
+### Needs
+
+- **[Kakao Map API KEY](https://apis.map.kakao.com/web/guide/#ready)**
+- **Jeju Data Hub API Project KEY**
+
+**FontAwesome**
+
+```
+$ npm i @fortawesome/fontawesome-svg-core
+$ npm i @fortawesome/free-solid-svg-icons
+$ npm i @fortawesome/react-fontawesome
+```
+
+**Redux & Redux Toolkit**
+
+```
+$ npm i redux
+$ npm i react-redux
+$ npm i @reduxjs/toolkit
+```
+
+**Axios**
+
+```
+$ npm i axios
+```
+
+**Styled Components**
+
+```
+$ npm i styled-components
+```
+
+---
+
+## Authors
+
+- [ABEL](https://github.com/ksw0154) - **Sangwon Kim** - <sangs8448@gmail.com>
+
+---
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2022 Sangwon Kim
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
