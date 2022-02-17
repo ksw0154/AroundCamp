@@ -33,7 +33,7 @@ This infomation is provided using Jeju Data Hub API and Kakao Map API.
 ### Needs
 
 - **[Kakao Map API KEY](https://apis.map.kakao.com/web/guide/#ready)**
-- **Jeju Data Hub API Project KEY**
+- **[Jeju Data Hub API Project KEY](https://www.jejudatahub.net/about/hub-intro)**
 
 **FontAwesome**
 
