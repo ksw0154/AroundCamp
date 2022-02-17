@@ -9,10 +9,8 @@
 
 ## About
 
-This project provides information necessary for camping sites and campin g in Jeju Island.  
+This project provides information necessary for camping sites and camping in Jeju Island.  
 This infomation is provided using Jeju Data Hub API and Kakao Map API.
-
----
 
 ## Overview
 
@@ -29,8 +27,6 @@ This infomation is provided using Jeju Data Hub API and Kakao Map API.
 <img width="600" alt="socialLogin" src="https://user-images.githubusercontent.com/44170696/154398350-910ae8ab-f766-46f7-b084-fb3af5f4b2f5.png">
 
 ### Remeber-me
-
----
 
 ## Getting Started
 
@@ -67,13 +63,9 @@ $ npm i axios
 $ npm i styled-components
 ```
 
----
-
 ## Authors
 
 - [ABEL](https://github.com/ksw0154) - **Sangwon Kim** - <sangs8448@gmail.com>
-
----
 
 ## License
 
