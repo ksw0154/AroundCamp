@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { faCampground } from "@fortawesome/free-solid-svg-icons";
-import { faCarSide, faCaravan, faStore, faStar } from "@fortawesome/free-solid-svg-icons";
-import { JEJU_CAMPING_URL, JEJU_SOCAR_URL, JEJU_STORE_URL, JEJU_RENTCAR_URL } from "../components/Oauth/AuthInfo";
+import { faCarSide, faCaravan, faStore, faStar, faMountain } from "@fortawesome/free-solid-svg-icons";
+import { JEJU_CAMPING_URL, JEJU_SOCAR_URL, JEJU_STORE_URL, JEJU_RENTCAR_URL, JEJU_OREUM_URL } from "../components/Oauth/AuthInfo";
 
 const itemList = [
   { text: "캠핑장", icon: faCampground, url: JEJU_CAMPING_URL, focused: false, list: "" },
+  { text: "오름", icon: faMountain, url: JEJU_OREUM_URL, focused: false, list: "" },
   { text: "쏘카", icon: faCarSide, url: JEJU_SOCAR_URL, focused: false, list: "" },
   { text: "렌트카", icon: faCaravan, url: JEJU_RENTCAR_URL, focused: false, list: "" },
   { text: "기념품 가게", icon: faStore, url: JEJU_STORE_URL, focused: false, list: "" },

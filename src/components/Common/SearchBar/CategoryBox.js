@@ -23,5 +23,6 @@ export default connect(mapStateToProps)(CategoryBox);
 
 const ItemBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-left: 20px;
 `;
